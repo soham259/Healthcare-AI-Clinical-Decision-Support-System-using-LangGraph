@@ -427,7 +427,7 @@ def collect_patient_data(state: AgentState) -> dict:
     patient.chest_pain_type = raw_patient_data.get("chest_pain_type", patient.chest_pain_type)
     return {"patient_profile": patient}
 
-@traceable(name="early_disease_detection", run_type="chain")
+
 def _patient_has_any_notable_finding(patient) -> bool:
     """
     Deterministic (non-LLM) check: does this patient have ANY symptom,
@@ -458,7 +458,7 @@ def _patient_has_any_notable_finding(patient) -> bool:
     ]
     return any(checks)
 
-
+@traceable(name="early_disease_detection", run_type="chain")
 def early_disease_detection(state: AgentState) -> dict:
     """
     Disease risk detection — now a hybrid of real trained models and LLM

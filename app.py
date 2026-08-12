@@ -599,7 +599,19 @@ if submitted:
         # Each run gets its own thread_id so the checkpointer can track it,
         # and so a resumed Command(resume=...) call knows which run to continue.
         thread_id = str(uuid.uuid4())
-        config = {"configurable": {"thread_id": thread_id}}
+        config = {
+    "configurable": {
+        "thread_id": thread_id,
+    },
+    "run_name": "clinical-decision-support",
+    "tags": [
+        "clinical",
+        "langgraph",
+    ],
+    "metadata": {
+        "application": "healthcare-ai",
+    },
+}
 
         # Execute workflow (this pauses automatically if the human-review gate fires)
         result = workflow.invoke(state, config=config)
