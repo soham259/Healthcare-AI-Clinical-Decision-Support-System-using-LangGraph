@@ -9,28 +9,24 @@ langchain-text-splitters
 langsmith
 pydantic
 
-# --- Local LLM + embeddings (via Ollama) ---
-# No pip package needed for Ollama itself — it's a separate app, see notes below.
-
 # --- Vector store ---
 faiss-cpu
 
 # --- PDF handling ---
 pypdf
-cryptography          # required by pypdf for AES-protected/encrypted PDFs (e.g. ADA guideline)
-reportlab              # used by pdf_report.py to generate the clinical PDF report
+cryptography
+reportlab
 
-# --- Explainability (Feature 1) ---
+# --- ML / Explainability ---
 numpy
-shap                    # optional — falls back to linear decomposition automatically if missing
-
-# --- Web search fallback (Corrective-RAG in fetch_medical_literature) ---
-tavily-python
-langchain-community      # (already listed above; provides TavilySearchResults wrapper)
-
-# --- Misc ---
-python-dotenv
-requests
 xgboost
+scikit-learn
 shap
 joblib
+
+# --- Web search ---
+tavily-python
+
+# --- Utilities ---
+python-dotenv
+requests
